@@ -1,15 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import ProductInfoComponent from './components/productcomponent/productinfocomponent';
+// 17+ 
+// the createRoot()
+// Inform the renderer that 
+// the 'HTMLElemennt' is root 
+// that is used for mounting
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ProductInfoComponent></ProductInfoComponent>
   </React.StrictMode>
 );
 
