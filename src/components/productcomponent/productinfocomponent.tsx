@@ -14,11 +14,12 @@ const ProductInfoComponent = () => {
     CategoryName:'',
     Manufacturer:'',
     Description:'',
-    BasePrice:0
+    BasePrice:0,
+    CanDelete:true
 
-  });  
+  });
   const [products, setProducts] = useState<ProductInfo[]>([]);
-  const [collection, setDataCollection] = useState<any[]>([]);
+
 
   const categories = ['Electronics', 'Electrical', 'Food', 'Fashion'];
   const manufacturers = ['MS-ECT', 'MS-ECL', 'MS-FOOD', 'MS-FASHION'];
@@ -30,7 +31,8 @@ const ProductInfoComponent = () => {
         CategoryName:'',
         Manufacturer:'',
         Description:'',
-        BasePrice:0
+        BasePrice:0,
+        CanDelete:true
       });
   }
   const save=()=>{
@@ -39,6 +41,24 @@ const ProductInfoComponent = () => {
     // console.log(JSON.stringify(collection));
 
   }
+
+  const deleteProduct=(i:number)=>{
+    setProducts(products=>{
+      return products.filter((a,b)=> b!==i)
+    })
+  }
+
+
+//not sure how below code will work as typescript is new to me and
+  const sortProduct=(orderBy:string)=>{
+
+    console.log(orderBy);
+    // setProducts(products=>{
+    //   return products.sort((a,b)=>a[orderBy] - b[orderBy])
+    // })
+  }
+
+
   return (
     <div className='container'>
        <div className='form-group'>
@@ -120,7 +140,7 @@ const ProductInfoComponent = () => {
        {/* {
         JSON.stringify(products)
        } */}
-       <DataContextEvent.Provider value={{products,setProduct}}>
+       <DataContextEvent.Provider value={{products,setProduct,deleteProduct,sortProduct}}>
           <DataGridContextComponent></DataGridContextComponent>
        </DataContextEvent.Provider>
     </div>
